@@ -64,7 +64,17 @@ public class Student {
 		
 	}
 	
-	
+	public void setSurname(String inputSurname) {
+		if( (inputSurname != null) && (!inputSurname.isEmpty()) 
+			&& (inputSurname.matches("[A-Z]{1}[a-z]{2,15}([ ]{1}[A-Z]{1}[a-z]{2,15})?"))) {
+			surname = inputSurname;
+		}
+		else
+		{
+			surname = "Unknown";
+		}
+		
+	}
 	
 	
 	//4. no-arg constructor
