@@ -84,5 +84,12 @@ public class Professor {
 		setDegree(inputDegree);
 	}
 	//6. toString
-
+	public String toString() {
+		//0: Karina Skirmante (master)
+		String result = id + ": " + name + " " + surname +
+				" (" + degree + ")";
+		return result;
+	}
+	
+	
 }
