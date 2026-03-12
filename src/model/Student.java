@@ -76,6 +76,48 @@ public class Student {
 		
 	}
 	
+	public void setFaculty(String inputFaculty) {
+		if((inputFaculty != null) && (!inputFaculty.isEmpty())
+				&& (inputFaculty.matches("[A-Za-z ]{3,100}"))) {
+			faculty = inputFaculty;
+		}
+		else
+		{
+			faculty = "Unknown";
+		}
+	}
+	
+	//no need to check !=null because this is primitive data type
+	public void setBirthYear(int inputBirthYear) {
+		if((inputBirthYear >= 1950) && (inputBirthYear <= 2020)) {
+			birthYear = inputBirthYear;
+		}
+		else
+		{
+			birthYear = 2008;
+		}
+	}
+	//enums also are referenced data type - need to check != null
+	public void setCountry(Country inputCountry) {
+		if(inputCountry != null) {
+			country = inputCountry;
+		}
+		else
+		{
+			country = Country.unknown;
+		}
+	}
+	
+	public void setPassportNumber(String inputPassportNumber) {
+		if( (inputPassportNumber != null) && (!inputPassportNumber.isEmpty()
+				&& (inputPassportNumber.matches("[A-Z]{2}[0-9]{6}")))) {
+			passportNumber = inputPassportNumber;
+		}
+		else
+		{
+			passportNumber = "Unknown";
+		}
+	}
 	
 	//4. no-arg constructor
 	//5. arg-constructor
