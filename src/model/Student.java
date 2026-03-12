@@ -120,7 +120,29 @@ public class Student {
 	}
 	
 	//4. no-arg constructor
+	public Student() {
+		setMatriculaNumber("AB123456");
+		setName("Aref");
+		setSurname("Hosseini");
+		setFaculty("ITF");
+		setBirthYear(2006);
+		setCountry(Country.Spain);
+		setPassportNumber("SP092345");
+	}
 	//5. arg-constructor
+	public Student(String inputMatriculaNumber,String inputName,
+		String inputSurname, String inputFaculty, 
+		int inputBirthYear, Country inputCountry, 
+		String inputPassportNumber) {
+		
+		setMatriculaNumber(inputMatriculaNumber);
+		setName(inputName);
+		setSurname(inputSurname);
+		setFaculty(inputFaculty);
+		setBirthYear(inputBirthYear);
+		setCountry(inputCountry);
+		setPassportNumber(inputPassportNumber);
+		}
 	//6.toString
 	//7. other functions
 
