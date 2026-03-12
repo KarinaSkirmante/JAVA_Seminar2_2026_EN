@@ -66,10 +66,23 @@ public class Professor {
 		}
 	}
 	
-	
-	
 	//4. no args constructor
+	public Professor() {
+		setId();
+		setName("Karina");
+		setSurname("Skirmante");
+		setDegree(ProfDegree.master);
+	}
+	
+	
 	//5. args constructor
+	public Professor(String inputName, String inputSurname,
+			ProfDegree inputDegree) {
+		setId();
+		setName(inputName);
+		setSurname(inputSurname);
+		setDegree(inputDegree);
+	}
 	//6. toString
 
 }
