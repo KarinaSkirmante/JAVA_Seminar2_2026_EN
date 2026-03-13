@@ -40,6 +40,26 @@ public class Course {
 		}
 	}
 	
+	public void setCreditPoints(int inputCreditPoints) {
+		if(inputCreditPoints > 0 && inputCreditPoints <= 10 ) {
+			creditPoints = inputCreditPoints;
+		}
+		else
+		{
+			creditPoints = 1;
+		}
+	}
+	
+	public void setProfessor(Professor inputProfessor) {
+		if(inputProfessor != null) {
+			professor = inputProfessor;
+		}
+		else
+		{
+			professor = new Professor();
+		}
+	}
+	
 	//4. no-args constructor
 	//5. args constructors
 	//6. toString
