@@ -46,7 +46,7 @@ public class MainService {
 		
 		System.out.println("-----------PROFESSORS---------");
 		Professor prof1 = new Professor();//Karina which is default professor
-		Professor prof2 = new Professor("Estere", "Vitola",ProfDegree.master);
+		Professor prof2 = new Professor("Estere", "Vitola",ProfDegree.phd);
 		//some wrong values as input arguments
 		Professor prof3 = new Professor("%#^%#&^%&^$^%#", "287646", null);
 		allProfessors.add(prof1);
@@ -68,6 +68,28 @@ public class MainService {
 		Grade gr4 = new Grade(10, stud2, course2);//John got 10 in Data Structures
 		allGrades.addAll(Arrays.asList(gr1, gr2, gr3, gr4));
 		System.out.println(allGrades);
+		
+		System.out.println("----------PROFESSORS WITH MASTER DEGREE------");
+		filterAllProfessorsWithSpecificDegree(ProfDegree.master);
+		System.out.println("----------PROFESSORS WITH PHD DEGREE------");
+		filterAllProfessorsWithSpecificDegree(ProfDegree.phd);
 	}
-
+	
+	
+	public static void filterAllProfessorsWithSpecificDegree(ProfDegree degree) {
+		//tempS - professor object. In every iteration it is different
+		for(Professor tempS : allProfessors) {
+			if(tempS.getDegree().equals(degree)) {
+				System.out.println(tempS);
+			}
+		}
+	}
+	//TODO create filtering function for Students which birthyear is 
+	//larger than 2005
+	
+	//TODO create filtering function for Students which faculty is ITF
+	//TODO create filtering functions for Course 
+	//which leading professor's id is 1
+	//TODO create filtering function for Grade which ones are failed 
+	//(smaller than 4)
 }
