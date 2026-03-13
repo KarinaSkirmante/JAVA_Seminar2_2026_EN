@@ -61,7 +61,20 @@ public class Course {
 	}
 	
 	//4. no-args constructor
+	public Course() {
+		setId();
+		setTitle("JAVA");
+		setCreditPoints(6);
+		setProfessor(new Professor());//default professor will be linked to default course
+	}
 	//5. args constructors
+	public Course(String inputTitle, int inputCreditPoints,
+			Professor inputProfessor) {
+		setId();
+		setTitle(inputTitle);
+		setCreditPoints(inputCreditPoints);
+		setProfessor(inputProfessor);
+	}
 	//6. toString
 	//7. additional function (if necessary)
 
