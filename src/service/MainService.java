@@ -1,6 +1,7 @@
 package service;
 
 import model.Country;
+import model.Course;
 import model.ProfDegree;
 import model.Professor;
 import model.Student;
@@ -25,7 +26,12 @@ public class MainService {
 		Professor prof3 = new Professor("%#^%#&^%&^$^%#", "287646", null);
 		System.out.println(prof3);
 		
+		System.out.println("-----------COURSES---------");
+		Course course1 = new Course();
+		System.out.println(course1);
 		
+		Course course2 = new Course("Data Structures", 10, prof2);
+		System.out.println(course2);
 		
 		
 		
