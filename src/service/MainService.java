@@ -1,5 +1,8 @@
 package service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import model.Country;
 import model.Course;
 import model.Grade;
@@ -9,40 +12,62 @@ import model.Student;
 
 public class MainService {
 
+	private static ArrayList<Student> allStudents 
+									= new ArrayList<Student>();
+	
+	private static ArrayList<Professor> allProfessors
+									= new ArrayList<Professor>();
+	
+	private static ArrayList<Course> allCourses
+									= new ArrayList<Course>();
+	
+	private static ArrayList<Grade> allGrades
+	     							= new ArrayList<Grade>();
+	
 	public static void main(String[] args) {
 		System.out.println("-----------STUDENTS---------");
 		Student stud1 = new Student();//Aref which is default student
-		System.out.println(stud1);
-		
 		Student stud2 = new Student("AB987654", "John", "Sarfo",
-				"ITF", 2007, Country.other, "LU236890");
-		System.out.println(stud2);
+				"ITF", 2007, Country.Latvia, "LU236890");
+		Student stud3 = new Student("AH245768", "Miray", "Turk",
+				"ITF", 2008, Country.Latvia, "WP345678");
+		allStudents.add(stud1);
+		allStudents.add(stud2);
+		allStudents.add(stud3);
+		System.out.println(allStudents);
+		System.out.println("-----------STUDENTS FROM LATVIA---------");
+		for(int i = 0; i < allStudents.size(); i++) {
+			if(allStudents.get(i).getCountry().equals(Country.Latvia)) {
+				System.out.println(allStudents.get(i));
+			}
+		}
+		
+		
 		
 		System.out.println("-----------PROFESSORS---------");
 		Professor prof1 = new Professor();//Karina which is default professor
-		System.out.println(prof1);
 		Professor prof2 = new Professor("Estere", "Vitola",ProfDegree.master);
-		System.out.println(prof2);
 		//some wrong values as input arguments
 		Professor prof3 = new Professor("%#^%#&^%&^$^%#", "287646", null);
-		System.out.println(prof3);
+		allProfessors.add(prof1);
+		allProfessors.add(prof2);
+		allProfessors.add(prof3);
+		System.out.println(allProfessors);
+		
 		
 		System.out.println("-----------COURSES---------");
 		Course course1 = new Course();
-		System.out.println(course1);
-		
 		Course course2 = new Course("Data Structures", 10, prof2);
-		System.out.println(course2);
+		allCourses.addAll(Arrays.asList(course1, course2));
+		System.out.println(allCourses);
 		
 		System.out.println("-----------GRADE---------");
 		Grade gr1 = new Grade();
-		System.out.println(gr1);
 		Grade gr2 = new Grade(6,stud1, course1);//Aref got 6 in JAVA
-		System.out.println(gr2);
 		Grade gr3 = new Grade(8, stud2, course1);//John got 8 in JAVA
-		System.out.println(gr3);
 		Grade gr4 = new Grade(10, stud2, course2);//John got 10 in Data Structures
-		System.out.println(gr4);
+		allGrades.addAll(Arrays.asList(gr1, gr2, gr3, gr4));
+		System.out.println(allGrades);
 	}
 
 }
