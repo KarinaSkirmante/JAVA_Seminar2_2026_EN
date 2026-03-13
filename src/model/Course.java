@@ -76,6 +76,13 @@ public class Course {
 		setProfessor(inputProfessor);
 	}
 	//6. toString
+	public String toString() {
+		//0: JAVA (6 CP), K. Skirmante
+		String result = id + ": " + title + " (" + creditPoints
+				+ " CP), " + professor.getName().charAt(0)
+				+ ". " + professor.getSurname();
+		return result;
+	}
 	//7. additional function (if necessary)
 
 }
