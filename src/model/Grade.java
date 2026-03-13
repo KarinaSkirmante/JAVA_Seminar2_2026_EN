@@ -61,7 +61,21 @@ public class Grade {
 	}
 	
 	//4.no-args constr
+	public Grade() {
+		setId();
+		setGradeValue(10);
+		setStudent(new Student());//Aref
+		setCourse(new Course());//JAVA
+	}
 	//5. arg constr
+	public Grade(int inputGradeValue, Student inputStudent, 
+			Course inputCourse) {
+		setId();
+		setGradeValue(inputGradeValue);
+		setStudent(inputStudent);
+		setCourse(inputCourse);
+	}
+	
 	//6.toString
 	//7. other functions(if necessary)
 
