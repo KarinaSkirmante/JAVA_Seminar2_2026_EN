@@ -77,6 +77,13 @@ public class Grade {
 	}
 	
 	//6.toString
+	public String toString() {
+		//20000: A. Hosseini got 10 in the JAVA
+		String result = id + ": " + student.getName().charAt(0)+ ". " +
+		student.getSurname() + " got " + gradeValue + " in the "
+				+ course.getTitle();
+		return result;
+	}
 	//7. other functions(if necessary)
 
 }
