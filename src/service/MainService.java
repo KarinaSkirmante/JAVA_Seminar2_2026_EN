@@ -102,6 +102,9 @@ public class MainService {
 		try {
 			createNewProfessor("Karlis", "Immers", ProfDegree.master,"ED123432");
 			System.out.println(allProfessors);
+			
+			System.out.println(getProfessorById(5));//Karlis
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -244,8 +247,27 @@ public class MainService {
 		Professor newProfessor = 
 		new Professor(inputName, inputSurname, inputDegree, inputPassportNumber);
 		allProfessors.add(newProfessor);
-		
-		
+	}
+	
+	
+	//R - retrieve by id
+	
+	public static Professor getProfessorById(long inputId) throws Exception {
+		//if id is negative
+		if(inputId < 0) {
+			Exception myEx = new Exception("Id shoudl be 0 or positive");
+			throw myEx;
+		}
+		//if professor with this id is found
+		for(Professor tempP : allProfessors) {
+			if(tempP.getId() == inputId) {
+				return tempP;
+			}
+		}
+		//if professor is not found
+		Exception myEx = new Exception("No such professor with id " 
+				+ inputId);
+		throw myEx;
 		
 		
 	}
