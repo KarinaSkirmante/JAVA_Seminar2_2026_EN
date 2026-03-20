@@ -28,7 +28,7 @@ public class MainService {
 		System.out.println("-----------STUDENTS---------");
 		Student stud1 = new Student();//Aref which is default student
 		Student stud2 = new Student("AB987654", "John", "Sarfo",
-				"ITF", 2007, Country.Latvia, "LU236890");
+				"EMF", 2007, Country.Latvia, "LU236890");
 		Student stud3 = new Student("AH245768", "Miray", "Turk",
 				"ITF", 2008, Country.Latvia, "WP345678");
 		allStudents.add(stud1);
@@ -79,10 +79,19 @@ public class MainService {
 		ArrayList<Student> result 
 		= filterAllStudentsWhichBirtyearIsLargerThan(2007);
 		System.out.println(result);
+		
+		System.out.println("----------STUDENT IN ITF FACULTY-----");
+		ArrayList<Student> result2 =
+				filterStudentWhichFaculty("ITF");
+		System.out.println(result2);
+		
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		
+		
+
 				
 	}
 	
@@ -128,8 +137,58 @@ public class MainService {
 				//3. iteration -> tempS = Anne
 	}
 	//TODO create filtering function for Students which faculty is ITF
+	public static ArrayList<Student> 
+	filterStudentWhichFaculty(String inputFaculty) throws Exception{
+		//TODO check the input param
+		ArrayList<Student> filteredStudents = new ArrayList<Student>();
+		
+		for(Student tempS : allStudents) {
+			if(tempS.getFaculty().equals(inputFaculty)) {
+				filteredStudents.add(tempS);
+			}
+		}
+		
+		
+		if(filteredStudents.isEmpty()) {
+			Exception myExc = new Exception
+				("There is no student which faculty is " + inputFaculty);
+			throw myExc;
+		}
+		else
+		{
+			return filteredStudents;
+		}
+		
+	}
+	
+	
 	//TODO create filtering functions for Course 
 	//which leading professor's id is 1
+	public static ArrayList<Course> 
+	filterCoursesByProfessorId(long inputId) throws Exception{
+		//TODO check input param
+		ArrayList<Course> filteredCourse = new  ArrayList<Course>();
+		for(Course tempC : allCourses) {
+			if(tempC.getProfessor().getId() == inputId) {
+				filteredCourse.add(tempC);
+			}
+		}
+		
+		
+		if(filteredCourse.isEmpty()) {
+			Exception myExc = new Exception
+				("There is no course which "
+						+ "leading professor is with id " + inputId);
+			throw myExc;
+		}
+		else
+		{
+			return filteredCourse;
+		}
+		
+	}
+	
+	
 	//TODO create filtering function for Grade which ones are failed 
 	//(smaller than 4)
 }
