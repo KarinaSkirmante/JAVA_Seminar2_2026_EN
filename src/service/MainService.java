@@ -98,7 +98,13 @@ public class MainService {
 			System.out.println(e.getMessage());
 		}
 		
-		
+		System.out.println("----------CRUD FOR PROFESSOR-----");
+		try {
+			createNewProfessor("Karlis", "Immers", ProfDegree.master,"ED123432");
+			System.out.println(allProfessors);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 
 				
 	}
@@ -221,4 +227,26 @@ public class MainService {
 	
 	//CRUD - C create; R - retrieve; U - updade; D - delete
 	
+	//C -  create new professor
+	public static void createNewProfessor(String inputName, String inputSurname,
+			ProfDegree inputDegree, String inputPassportNumber)throws Exception {
+		//TODO check input params
+		
+		for(Professor tempP : allProfessors) {
+			if(tempP.getPassportNumber().equals(inputPassportNumber)) {
+				Exception myEx = 
+				new Exception("Professor already exists in the system");
+				throw myEx;
+				
+			}
+		}
+		
+		Professor newProfessor = 
+		new Professor(inputName, inputSurname, inputDegree, inputPassportNumber);
+		allProfessors.add(newProfessor);
+		
+		
+		
+		
+	}
 }
