@@ -85,6 +85,10 @@ public class MainService {
 				filterStudentWhichFaculty("ITF");
 		System.out.println(result2);
 		
+		System.out.println("----------COURSES FOR ESTERE-----");
+		ArrayList<Course> result3 = filterCoursesByProfessorId(1);
+		System.out.println(result3);
+		
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -191,4 +195,7 @@ public class MainService {
 	
 	//TODO create filtering function for Grade which ones are failed 
 	//(smaller than 4)
+	
+	
+	
 }
