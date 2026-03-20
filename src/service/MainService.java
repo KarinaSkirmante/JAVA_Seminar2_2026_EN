@@ -74,8 +74,16 @@ public class MainService {
 		System.out.println("----------PROFESSORS WITH PHD DEGREE------");
 		filterAllProfessorsWithSpecificDegree(ProfDegree.phd);
 		System.out.println("----------STUDENT BIRTH YEAR > 2007------");
-		filterAllStudentsWhichBirtyearIsLargerThan(2007);
-		
+		try
+		{
+		ArrayList<Student> result 
+		= filterAllStudentsWhichBirtyearIsLargerThan(2007);
+		System.out.println(result);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+				
 	}
 	
 	
@@ -90,24 +98,34 @@ public class MainService {
 	}
 	//TODO create filtering function for Students which birthyear is 
 	//larger than 2005
-	public static void 
-	filterAllStudentsWhichBirtyearIsLargerThan(int inputBirthyearThreshold)
+	public static ArrayList<Student> 
+	filterAllStudentsWhichBirtyearIsLargerThan(int inputBirthyearThreshold) throws Exception
 	{
 		//TODO check input param
-		//John, Sarah, Anne
 		
-		//1. iteration -> tempS = John
-		//2. iteration -> tempS = Sarah
-		//3. iteration -> tempS = Anne
-		
+		ArrayList<Student> filteredStudents = new ArrayList<Student>();
 		for(Student tempS : allStudents) {
 			if(tempS.getBirthYear() >= inputBirthyearThreshold) {
-				System.out.println(tempS);
+				filteredStudents.add(tempS);
 			}
 		}
 		
 		
+		if(filteredStudents.isEmpty()) {
+			Exception myExc = new Exception
+				("There is no student which birth year is larger than " + inputBirthyearThreshold);
+			throw myExc;
+		}
+		else
+		{
+			return filteredStudents;
+		}
 		
+		//John, Sarah, Anne
+		
+				//1. iteration -> tempS = John
+				//2. iteration -> tempS = Sarah
+				//3. iteration -> tempS = Anne
 	}
 	//TODO create filtering function for Students which faculty is ITF
 	//TODO create filtering functions for Course 
