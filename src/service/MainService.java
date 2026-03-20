@@ -65,7 +65,7 @@ public class MainService {
 		Grade gr1 = new Grade();
 		Grade gr2 = new Grade(6,stud1, course1);//Aref got 6 in JAVA
 		Grade gr3 = new Grade(8, stud2, course1);//John got 8 in JAVA
-		Grade gr4 = new Grade(10, stud2, course2);//John got 10 in Data Structures
+		Grade gr4 = new Grade(3, stud2, course2);//John got 3 in Data Structures
 		allGrades.addAll(Arrays.asList(gr1, gr2, gr3, gr4));
 		System.out.println(allGrades);
 		
@@ -89,6 +89,10 @@ public class MainService {
 		ArrayList<Course> result3 = filterCoursesByProfessorId(1);
 		System.out.println(result3);
 		
+		System.out.println("----------FAILED GRADES-----");
+		
+		ArrayList<Grade> result4 = filterFailedGrades();
+		System.out.println(result4);
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -195,7 +199,25 @@ public class MainService {
 	
 	//TODO create filtering function for Grade which ones are failed 
 	//(smaller than 4)
-	
+	public static ArrayList<Grade> filterFailedGrades() throws Exception{
+		
+		ArrayList<Grade> filterGrades = new ArrayList<Grade>();
+		
+		for(Grade tempG : allGrades) {
+			if(tempG.getGradeValue() < 4) {
+				filterGrades.add(tempG);
+			}
+		}
+		if(filterGrades.isEmpty()) {
+			Exception myExc = new Exception
+				("There is no failed grades");
+			throw myExc;
+		}
+		else
+		{
+			return filterGrades;
+		}
+	}
 	
 	
 }
