@@ -73,20 +73,42 @@ public class MainService {
 		filterAllProfessorsWithSpecificDegree(ProfDegree.master);
 		System.out.println("----------PROFESSORS WITH PHD DEGREE------");
 		filterAllProfessorsWithSpecificDegree(ProfDegree.phd);
+		System.out.println("----------STUDENT BIRTH YEAR > 2007------");
+		filterAllStudentsWhichBirtyearIsLargerThan(2007);
+		
 	}
 	
 	
 	public static void filterAllProfessorsWithSpecificDegree(ProfDegree degree) {
-		//tempS - professor object. In every iteration it is different
-		for(Professor tempS : allProfessors) {
-			if(tempS.getDegree().equals(degree)) {
-				System.out.println(tempS);
+		//TODO check input param
+		//tempP - professor object. In every iteration it is different
+		for(Professor tempP : allProfessors) {
+			if(tempP.getDegree().equals(degree)) {
+				System.out.println(tempP);
 			}
 		}
 	}
 	//TODO create filtering function for Students which birthyear is 
 	//larger than 2005
-	
+	public static void 
+	filterAllStudentsWhichBirtyearIsLargerThan(int inputBirthyearThreshold)
+	{
+		//TODO check input param
+		//John, Sarah, Anne
+		
+		//1. iteration -> tempS = John
+		//2. iteration -> tempS = Sarah
+		//3. iteration -> tempS = Anne
+		
+		for(Student tempS : allStudents) {
+			if(tempS.getBirthYear() >= inputBirthyearThreshold) {
+				System.out.println(tempS);
+			}
+		}
+		
+		
+		
+	}
 	//TODO create filtering function for Students which faculty is ITF
 	//TODO create filtering functions for Course 
 	//which leading professor's id is 1
