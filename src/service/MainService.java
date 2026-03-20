@@ -104,6 +104,10 @@ public class MainService {
 			System.out.println(allProfessors);
 			
 			System.out.println(getProfessorById(5));//Karlis
+			updateProfessorById(2, "Vairis", "Caune", ProfDegree.phd);
+			System.out.println(allProfessors);
+			deleteProfessorById(1);//Estere will be removed
+			System.out.println(allProfessors);
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -228,7 +232,7 @@ public class MainService {
 		}
 	}
 	
-	//CRUD - C create; R - retrieve; U - updade; D - delete
+	//CRUD - C create; R - retrieve; U - update; D - delete
 	
 	//C -  create new professor
 	public static void createNewProfessor(String inputName, String inputSurname,
@@ -271,4 +275,25 @@ public class MainService {
 		
 		
 	}
+	
+	
+	//U - update by id
+	public static void updateProfessorById(long inputId,
+			String inputName, String inputSurname,
+			ProfDegree inputDegree) throws Exception {
+		
+		Professor profForUpdate = getProfessorById(inputId);
+		//TODO check input params
+		
+		profForUpdate.setName(inputName);
+		profForUpdate.setSurname(inputSurname);
+		profForUpdate.setDegree(inputDegree);
+	}
+	
+	//D - delete by id
+	public static void deleteProfessorById(long inputId) throws Exception{
+		Professor profForDeleting = getProfessorById(inputId);
+		allProfessors.remove(profForDeleting);
+	}
+	
 }
