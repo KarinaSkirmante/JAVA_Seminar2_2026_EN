@@ -46,9 +46,9 @@ public class MainService {
 		
 		System.out.println("-----------PROFESSORS---------");
 		Professor prof1 = new Professor();//Karina which is default professor
-		Professor prof2 = new Professor("Estere", "Vitola",ProfDegree.phd);
+		Professor prof2 = new Professor("Estere", "Vitola",ProfDegree.phd, "RT234567");
 		//some wrong values as input arguments
-		Professor prof3 = new Professor("%#^%#&^%&^$^%#", "287646", null);
+		Professor prof3 = new Professor("%#^%#&^%&^$^%#", "287646", null, "asdfghgds");
 		allProfessors.add(prof1);
 		allProfessors.add(prof2);
 		allProfessors.add(prof3);
@@ -219,5 +219,6 @@ public class MainService {
 		}
 	}
 	
+	//CRUD - C create; R - retrieve; U - updade; D - delete
 	
 }

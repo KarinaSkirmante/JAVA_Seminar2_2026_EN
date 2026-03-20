@@ -6,6 +6,7 @@ public class Professor {
 	private String name;
 	private String surname;
 	private ProfDegree degree;
+	private String passportNumber;
 	
 	//helper variable and no need to create set or get for it
 	private static long counter = 0;
@@ -24,6 +25,10 @@ public class Professor {
 	
 	public ProfDegree getDegree() {
 		return degree;
+	}
+	
+	public String getPassportNumber() {
+		return passportNumber;
 	}
 	
 	//3. setters
@@ -66,28 +71,42 @@ public class Professor {
 		}
 	}
 	
+	public void setPassportNumber(String inputPassportNumber) {
+		if( (inputPassportNumber != null) && (!inputPassportNumber.isEmpty()
+				&& (inputPassportNumber.matches("[A-Z]{2}[0-9]{6}")))) {
+			passportNumber = inputPassportNumber;
+		}
+		else
+		{
+			passportNumber = "Unknown";
+		}
+	}
+	
+	
 	//4. no args constructor
 	public Professor() {
 		setId();
 		setName("Karina");
 		setSurname("Skirmante");
 		setDegree(ProfDegree.master);
+		setPassportNumber("AQ123456");
 	}
 	
 	
 	//5. args constructor
 	public Professor(String inputName, String inputSurname,
-			ProfDegree inputDegree) {
+			ProfDegree inputDegree, String inputPassportNumber) {
 		setId();
 		setName(inputName);
 		setSurname(inputSurname);
 		setDegree(inputDegree);
+		setPassportNumber(inputPassportNumber);
 	}
 	//6. toString
 	public String toString() {
 		//0: Karina Skirmante (master)
 		String result = id + ": " + name + " " + surname +
-				" (" + degree + ")";
+				" (" + degree + ") " + passportNumber;
 		return result;
 	}
 	
