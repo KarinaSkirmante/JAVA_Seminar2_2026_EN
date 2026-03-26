@@ -24,8 +24,7 @@ public class MainService {
 	
 	public static void main(String[] args) {
 		
-		System.out.println("-----------ALL PERSONS---------");
-		System.out.println(allPersons);
+
 		
 		System.out.println("-----------STUDENTS---------");
 		Student stud1 = new Student();//Aref which is default student
@@ -72,7 +71,8 @@ public class MainService {
 			}
 		}
 		
-		
+		System.out.println("-----------ALL PERSONS---------");
+		System.out.println(allPersons);
 		System.out.println("-----------COURSES---------");
 		Course course1 = new Course();
 		Course course2 = new Course("Data Structures", 10, prof2);
@@ -118,20 +118,23 @@ public class MainService {
 		
 		System.out.println("----------CRUD FOR PROFESSOR-----");
 		try {
+			System.out.println("---CREATE------");
 			createNewProfessor("Karlis", "Immers", ProfDegree.master,"ED123432");
 			for(Person tempP : allPersons) {
 				if(tempP instanceof Professor) {
 					System.out.println(tempP);
 				}
 			}
-			
+			System.out.println("---RETRIEVE BY ID------");
 			System.out.println(getProfessorById(5));//Karlis
+			System.out.println("---UPDATE BY ID------");
 			updateProfessorById(2, "Vairis", "Caune", ProfDegree.phd);
 			for(Person tempP : allPersons) {
 				if(tempP instanceof Professor) {
 					System.out.println(tempP);
 				}
 			}
+			System.out.println("---DELETE BY ID------");
 			deleteProfessorById(1);//Estere will be removed
 			for(Person tempP : allPersons) {
 				if(tempP instanceof Professor) {
@@ -168,9 +171,12 @@ public class MainService {
 		//TODO check input param
 		
 		ArrayList<Student> filteredStudents = new ArrayList<Student>();
-		for(Student tempS : allStudents) {
-			if(tempS.getBirthYear() >= inputBirthyearThreshold) {
-				filteredStudents.add(tempS);
+		for(Person tempP : allPersons) {
+			if(tempP instanceof Student) {
+				Student tempStudent = (Student) tempP;
+				if(tempStudent.getBirthYear() >= inputBirthyearThreshold) {
+					filteredStudents.add(tempStudent);
+				}
 			}
 		}
 		
@@ -197,10 +203,16 @@ public class MainService {
 		//TODO check the input param
 		ArrayList<Student> filteredStudents = new ArrayList<Student>();
 		
-		for(Student tempS : allStudents) {
-			if(tempS.getFaculty().equals(inputFaculty)) {
-				filteredStudents.add(tempS);
+		for(Person tempP : allPersons) {
+			if(tempP instanceof Student)
+			{
+				Student tempStudent = (Student)tempP;
+				
+				if(tempStudent.getFaculty().equals(inputFaculty)) {
+					filteredStudents.add(tempStudent);
+				}
 			}
+			
 		}
 		
 		
@@ -273,7 +285,8 @@ public class MainService {
 			ProfDegree inputDegree, String inputPassportNumber)throws Exception {
 		//TODO check input params
 		
-		for(Professor tempP : allProfessors) {
+		for(Person tempP : allPersons) {
+			//TODO if we want we can check for professor, bet passportNukber is also created in the person class
 			if(tempP.getPassportNumber().equals(inputPassportNumber)) {
 				Exception myEx = 
 				new Exception("Professor already exists in the system");
@@ -284,7 +297,7 @@ public class MainService {
 		
 		Professor newProfessor = 
 		new Professor(inputName, inputSurname, inputDegree, inputPassportNumber);
-		allProfessors.add(newProfessor);
+		allPersons.add(newProfessor);
 	}
 	
 	
@@ -297,10 +310,17 @@ public class MainService {
 			throw myEx;
 		}
 		//if professor with this id is found
-		for(Professor tempP : allProfessors) {
-			if(tempP.getId() == inputId) {
-				return tempP;
+		for(Person tempP : allPersons) {
+			if(tempP instanceof Professor)
+			{
+				Professor tempProfessor = (Professor)tempP;
+				
+				if(tempProfessor.getId() == inputId) {
+					return tempProfessor;
+				}
 			}
+				
+		
 		}
 		//if professor is not found
 		Exception myEx = new Exception("No such professor with id " 
@@ -327,7 +347,7 @@ public class MainService {
 	//D - delete by id
 	public static void deleteProfessorById(long inputId) throws Exception{
 		Professor profForDeleting = getProfessorById(inputId);
-		allProfessors.remove(profForDeleting);
+		allPersons.remove(profForDeleting);
 	}
 	
 }
