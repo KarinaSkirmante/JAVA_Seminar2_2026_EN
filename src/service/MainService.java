@@ -1,22 +1,20 @@
 package service;
 
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import model.Country;
 import model.Course;
 import model.Grade;
+import model.Person;
 import model.ProfDegree;
 import model.Professor;
 import model.Student;
 
 public class MainService {
 
-	private static ArrayList<Student> allStudents 
-									= new ArrayList<Student>();
-	
-	private static ArrayList<Professor> allProfessors
-									= new ArrayList<Professor>();
+	private static ArrayList<Person> allPersons = new ArrayList<Person>();
 	
 	private static ArrayList<Course> allCourses
 									= new ArrayList<Course>();
@@ -25,20 +23,36 @@ public class MainService {
 	     							= new ArrayList<Grade>();
 	
 	public static void main(String[] args) {
+		
+		System.out.println("-----------ALL PERSONS---------");
+		System.out.println(allPersons);
+		
 		System.out.println("-----------STUDENTS---------");
 		Student stud1 = new Student();//Aref which is default student
 		Student stud2 = new Student("AB987654", "John", "Sarfo",
 				"EMF", 2007, Country.Latvia, "LU236890");
 		Student stud3 = new Student("AH245768", "Miray", "Turk",
 				"ITF", 2008, Country.Latvia, "WP345678");
-		allStudents.add(stud1);
-		allStudents.add(stud2);
-		allStudents.add(stud3);
-		System.out.println(allStudents);
+		allPersons.add(stud1);
+		allPersons.add(stud2);
+		allPersons.add(stud3);
+		//print out only students
+		for(Person tempP : allPersons) {
+			if(tempP instanceof Student) {//if this person is actually student
+				System.out.println(tempP);
+			}
+		}
+		
+		
+		
 		System.out.println("-----------STUDENTS FROM LATVIA---------");
-		for(int i = 0; i < allStudents.size(); i++) {
-			if(allStudents.get(i).getCountry().equals(Country.Latvia)) {
-				System.out.println(allStudents.get(i));
+		for(int i = 0; i < allPersons.size(); i++) {
+			if(allPersons.get(i) instanceof Student)//checks if person is actually a Student
+			{
+				Student tempStudent = (Student)allPersons.get(i);
+				if(tempStudent.getCountry().equals(Country.Latvia)) {
+					System.out.println(tempStudent);
+				}
 			}
 		}
 		
@@ -49,10 +63,14 @@ public class MainService {
 		Professor prof2 = new Professor("Estere", "Vitola",ProfDegree.phd, "RT234567");
 		//some wrong values as input arguments
 		Professor prof3 = new Professor("%#^%#&^%&^$^%#", "287646", null, "asdfghgds");
-		allProfessors.add(prof1);
-		allProfessors.add(prof2);
-		allProfessors.add(prof3);
-		System.out.println(allProfessors);
+		allPersons.add(prof1);
+		allPersons.add(prof2);
+		allPersons.add(prof3);
+		for(Person tempP : allPersons) {
+			if(tempP instanceof Professor) {
+				System.out.println(tempP);
+			}
+		}
 		
 		
 		System.out.println("-----------COURSES---------");
@@ -101,13 +119,25 @@ public class MainService {
 		System.out.println("----------CRUD FOR PROFESSOR-----");
 		try {
 			createNewProfessor("Karlis", "Immers", ProfDegree.master,"ED123432");
-			System.out.println(allProfessors);
+			for(Person tempP : allPersons) {
+				if(tempP instanceof Professor) {
+					System.out.println(tempP);
+				}
+			}
 			
 			System.out.println(getProfessorById(5));//Karlis
 			updateProfessorById(2, "Vairis", "Caune", ProfDegree.phd);
-			System.out.println(allProfessors);
+			for(Person tempP : allPersons) {
+				if(tempP instanceof Professor) {
+					System.out.println(tempP);
+				}
+			}
 			deleteProfessorById(1);//Estere will be removed
-			System.out.println(allProfessors);
+			for(Person tempP : allPersons) {
+				if(tempP instanceof Professor) {
+					System.out.println(tempP);
+				}
+			}
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -120,9 +150,13 @@ public class MainService {
 	public static void filterAllProfessorsWithSpecificDegree(ProfDegree degree) {
 		//TODO check input param
 		//tempP - professor object. In every iteration it is different
-		for(Professor tempP : allProfessors) {
-			if(tempP.getDegree().equals(degree)) {
-				System.out.println(tempP);
+		for(Person tempP : allPersons) {
+			if(tempP instanceof Professor)
+			{
+				Professor tempProfessor = (Professor)tempP;
+				if(tempProfessor.getDegree().equals(degree)) {
+					System.out.println(tempProfessor);
+				}
 			}
 		}
 	}
