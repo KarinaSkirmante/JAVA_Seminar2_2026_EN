@@ -2,9 +2,9 @@ package model;
 
 public class Person {
 	//1. variables
-	private String name;
-	private String surname;
-	private String passportNumber;
+	protected String name;
+	protected String surname;
+	protected String passportNumber;
 	
 	
 	//2. getters

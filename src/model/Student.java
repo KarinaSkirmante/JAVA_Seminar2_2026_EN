@@ -1,20 +1,20 @@
 package model;
 
 //Model class - data class
-public class Student {
+public class Student extends Person  {
 	//1. variables
 	private String matriculaNumber;
-
 	private String faculty;
 	private int birthYear;
 	private Country country;
+	
+	//name, surname, passportNumber is from Person class
 	
 	//2. getters
 	public String getMatriculaNumber() {
 		return matriculaNumber;
 	}
-	
-	
+		
 	public String getFaculty() {
 		return faculty;
 	}
@@ -82,13 +82,15 @@ public class Student {
 	
 	//4. no-arg constructor
 	public Student() {
+		super();//this will call no argument constructor Person()
 		setMatriculaNumber("AB123456");
-		setName("Aref");
-		setSurname("Hosseini");
+		//setName("Aref");
+		//setSurname("Hosseini");
 		setFaculty("ITF");
 		setBirthYear(2006);
 		setCountry(Country.Spain);
-		setPassportNumber("SP092345");
+		//setPassportNumber("SP092345");
+		
 	}
 	//5. arg-constructor
 	public Student(String inputMatriculaNumber,String inputName,
@@ -96,13 +98,16 @@ public class Student {
 		int inputBirthYear, Country inputCountry, 
 		String inputPassportNumber) {
 		
+		super(inputName, inputSurname,inputPassportNumber);
+		//^^^ this will call argument constructor from the Person class
+		//public Person(String inputName, String inputSurname, String inputPassportNumber)
 		setMatriculaNumber(inputMatriculaNumber);
-		setName(inputName);
-		setSurname(inputSurname);
+		//setName(inputName);
+		//setSurname(inputSurname);
 		setFaculty(inputFaculty);
 		setBirthYear(inputBirthYear);
 		setCountry(inputCountry);
-		setPassportNumber(inputPassportNumber);
+		//setPassportNumber(inputPassportNumber);
 		}
 	//6.toString
 	public String toString() {
