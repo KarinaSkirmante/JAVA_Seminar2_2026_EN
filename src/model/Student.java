@@ -4,23 +4,16 @@ package model;
 public class Student {
 	//1. variables
 	private String matriculaNumber;
-	private String name;
-	private String surname;
+
 	private String faculty;
 	private int birthYear;
 	private Country country;
-	private String passportNumber;
+	
 	//2. getters
 	public String getMatriculaNumber() {
 		return matriculaNumber;
 	}
-	public String getName() {
-		return name;
-	}
 	
-	public String getSurname() {
-		return surname;
-	}
 	
 	public String getFaculty() {
 		return faculty;
@@ -34,9 +27,7 @@ public class Student {
 		return country;
 	}
 	
-	public String getPassportNumber() {
-		return passportNumber;
-	}
+
 	
 	//3. setters
 	public void setMatriculaNumber(String inputMatriculaNumber) {
@@ -52,29 +43,9 @@ public class Student {
 	}
 	
 	
-	public void setName(String inputName) {
-		if( (inputName != null) && (!inputName.isEmpty()) 
-			&& (inputName.matches("[A-Z]{1}[a-z]{2,15}([ ]{1}[A-Z]{1}[a-z]{2,15})?"))) {
-			name = inputName;
-		}
-		else
-		{
-			name = "Unknown";
-		}
-		
-	}
 	
-	public void setSurname(String inputSurname) {
-		if( (inputSurname != null) && (!inputSurname.isEmpty()) 
-			&& (inputSurname.matches("[A-Z]{1}[a-z]{2,15}([ ]{1}[A-Z]{1}[a-z]{2,15})?"))) {
-			surname = inputSurname;
-		}
-		else
-		{
-			surname = "Unknown";
-		}
-		
-	}
+	
+	
 	
 	public void setFaculty(String inputFaculty) {
 		if((inputFaculty != null) && (!inputFaculty.isEmpty())
@@ -108,16 +79,6 @@ public class Student {
 		}
 	}
 	
-	public void setPassportNumber(String inputPassportNumber) {
-		if( (inputPassportNumber != null) && (!inputPassportNumber.isEmpty()
-				&& (inputPassportNumber.matches("[A-Z]{2}[0-9]{6}")))) {
-			passportNumber = inputPassportNumber;
-		}
-		else
-		{
-			passportNumber = "Unknown";
-		}
-	}
 	
 	//4. no-arg constructor
 	public Student() {
